@@ -21,17 +21,21 @@ A full-stack team collaboration platform built with Vue.js and FastAPI, featurin
 ## 🖼️ Screenshots
 
 ### Dashboard
-![Dashboard](screenshots/dashboard.png)
+
+![Dashboard](screenshots/dashboard.jpg)
 
 ### Kanban Board
-![Kanban Board](screenshots/kanban.png)
+
+![Kanban Board](screenshots/kanban.jpg)
 
 ### Workspaces
-![Workspaces](screenshots/workspaces.png)
+
+![Workspaces](screenshots/workspaces.jpg)
 
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **Vue.js 3** - Progressive JavaScript framework with Composition API
 - **Vite** - Next-generation frontend build tool
 - **Vue Router** - Client-side routing
@@ -40,6 +44,7 @@ A full-stack team collaboration platform built with Vue.js and FastAPI, featurin
 - **Axios** - HTTP client for API requests
 
 ### Backend
+
 - **FastAPI** - Modern Python web framework
 - **SQLAlchemy** - SQL toolkit and ORM
 - **PostgreSQL** - Relational database
@@ -119,34 +124,39 @@ documents
 ### Backend Setup
 
 1. **Navigate to backend directory**
+
    ```bash
    cd backend
    ```
 
 2. **Create virtual environment**
+
    ```bash
    python -m venv venv
-   
+
    # Windows
    venv\Scripts\activate
-   
+
    # macOS/Linux
    source venv/bin/activate
    ```
 
 3. **Install dependencies**
+
    ```bash
    pip install -r requirements.txt
    ```
 
 4. **Create PostgreSQL database**
+
    ```sql
    CREATE DATABASE team_hub;
    ```
 
 5. **Configure environment variables**
-   
+
    Create a `.env` file in the backend directory:
+
    ```env
    DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/team_hub
    SECRET_KEY=your-super-secret-key-change-in-production
@@ -155,88 +165,99 @@ documents
    ```
 
 6. **Create database tables**
+
    ```bash
    python -c "from app.db.database import engine, Base; from app.models import *; Base.metadata.create_all(bind=engine)"
    ```
 
 7. **Start the backend server**
+
    ```bash
    uvicorn main:app --reload
    ```
-   
+
    Backend will be running at `http://localhost:8000`
-   
+
    API documentation available at `http://localhost:8000/docs`
 
 ### Frontend Setup
 
 1. **Navigate to frontend directory**
+
    ```bash
    cd frontend
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start the development server**
+
    ```bash
    npm run dev
    ```
-   
+
    Frontend will be running at `http://localhost:5173`
 
 ## 📡 API Endpoints
 
 ### Authentication
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Register new user |
-| POST | `/api/auth/login` | Login user |
-| GET | `/api/auth/me` | Get current user |
+
+| Method | Endpoint             | Description       |
+| ------ | -------------------- | ----------------- |
+| POST   | `/api/auth/register` | Register new user |
+| POST   | `/api/auth/login`    | Login user        |
+| GET    | `/api/auth/me`       | Get current user  |
 
 ### Workspaces
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/workspaces/` | List all workspaces |
-| POST | `/api/workspaces/` | Create workspace |
-| GET | `/api/workspaces/{id}` | Get workspace details |
-| PATCH | `/api/workspaces/{id}` | Update workspace |
-| DELETE | `/api/workspaces/{id}` | Delete workspace |
+
+| Method | Endpoint               | Description           |
+| ------ | ---------------------- | --------------------- |
+| GET    | `/api/workspaces/`     | List all workspaces   |
+| POST   | `/api/workspaces/`     | Create workspace      |
+| GET    | `/api/workspaces/{id}` | Get workspace details |
+| PATCH  | `/api/workspaces/{id}` | Update workspace      |
+| DELETE | `/api/workspaces/{id}` | Delete workspace      |
 
 ### Projects
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/projects/` | List projects |
-| POST | `/api/projects/` | Create project |
-| GET | `/api/projects/{id}` | Get project |
-| PATCH | `/api/projects/{id}` | Update project |
+
+| Method | Endpoint             | Description    |
+| ------ | -------------------- | -------------- |
+| GET    | `/api/projects/`     | List projects  |
+| POST   | `/api/projects/`     | Create project |
+| GET    | `/api/projects/{id}` | Get project    |
+| PATCH  | `/api/projects/{id}` | Update project |
 | DELETE | `/api/projects/{id}` | Delete project |
 
 ### Tasks
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/tasks/` | List tasks |
-| POST | `/api/tasks/` | Create task |
-| GET | `/api/tasks/{id}` | Get task |
-| PATCH | `/api/tasks/{id}` | Update task |
-| PATCH | `/api/tasks/{id}/position` | Update task position (drag-drop) |
-| DELETE | `/api/tasks/{id}` | Delete task |
+
+| Method | Endpoint                   | Description                      |
+| ------ | -------------------------- | -------------------------------- |
+| GET    | `/api/tasks/`              | List tasks                       |
+| POST   | `/api/tasks/`              | Create task                      |
+| GET    | `/api/tasks/{id}`          | Get task                         |
+| PATCH  | `/api/tasks/{id}`          | Update task                      |
+| PATCH  | `/api/tasks/{id}/position` | Update task position (drag-drop) |
+| DELETE | `/api/tasks/{id}`          | Delete task                      |
 
 ### Documents
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/documents/` | List documents |
-| POST | `/api/documents/` | Create document |
-| GET | `/api/documents/{id}` | Get document |
-| PATCH | `/api/documents/{id}` | Update document |
+
+| Method | Endpoint              | Description     |
+| ------ | --------------------- | --------------- |
+| GET    | `/api/documents/`     | List documents  |
+| POST   | `/api/documents/`     | Create document |
+| GET    | `/api/documents/{id}` | Get document    |
+| PATCH  | `/api/documents/{id}` | Update document |
 | DELETE | `/api/documents/{id}` | Delete document |
 
 ### Dashboard
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/dashboard/stats` | Get dashboard statistics |
+
+| Method | Endpoint               | Description              |
+| ------ | ---------------------- | ------------------------ |
+| GET    | `/api/dashboard/stats` | Get dashboard statistics |
 
 ## 🔐 Authentication Flow
 
@@ -271,4 +292,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Built with ❤️ using Vue.js and FastAPI
+Built with using Vue.js and FastAPI
