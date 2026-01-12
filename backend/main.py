@@ -3,8 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import auth, users, workspaces, projects, tasks, comments, documents, dashboard
 from app.core.config import settings
-from app.db.database import engine
+from app.db.database import engine, Base
 from app.models import user, workspace, project, task, comment, document
+
+# Create tables on startup
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Team Hub API",
@@ -12,10 +15,10 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS middleware
+# CORS middleware - allow all origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Vue dev server
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
